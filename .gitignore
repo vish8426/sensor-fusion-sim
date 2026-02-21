@@ -12,5 +12,5 @@ build/
 # VS Code
 .vscode/
 
-# Matplotlib
-*.png
+# Matplotlib - ignore loose plots in root only
+/*.png
