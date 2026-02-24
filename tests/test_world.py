@@ -7,9 +7,11 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from src.world import Vessel, World
 
+
 class TestVessel(unittest.TestCase):
+
     def test_initial_state(self):
-        """Vessel initialises with corect default state."""
+        """Vessel initialises with correct default state."""
         vessel = Vessel()
         self.assertEqual(vessel.x, 0.0)
         self.assertEqual(vessel.y, 0.0)
@@ -27,7 +29,7 @@ class TestVessel(unittest.TestCase):
         """Heading should update correctly with d_heading."""
         vessel = Vessel(heading=0.0)
         vessel.update(dt=1.0, d_heading=0.1)
-        self.assertAlmostEqual(vessel.hjeading, 0.1, places=5)
+        self.assertAlmostEqual(vessel.heading, 0.1, places=5)
 
     def test_speed_change(self):
         """Speed should update correctly with d_speed."""
@@ -40,14 +42,16 @@ class TestVessel(unittest.TestCase):
         vessel = Vessel()
         self.assertEqual(len(vessel.state()), 4)
 
+
 class TestWorld(unittest.TestCase):
-    def test_history_lenght(self):
+
+    def test_history_length(self):
         """History should record one entry per step."""
         world = World(dt=0.1)
         world.run(steps=50)
         self.assertEqual(len(world.history), 50)
 
-    def test_time_advances(sself):
+    def test_time_advances(self):
         """Simulation time should advance correctly."""
         world = World(dt=0.1)
         world.run(steps=10)
@@ -62,10 +66,11 @@ class TestWorld(unittest.TestCase):
         world_with_control.run(steps=100, control_fn=lambda t: (0.05, 0.0))
 
         self.assertNotAlmostEqual(
-            world_no_control.vessel.heading, 
+            world_no_control.vessel.heading,
             world_with_control.vessel.heading,
             places=3
         )
+
 
 if __name__ == '__main__':
     unittest.main()
