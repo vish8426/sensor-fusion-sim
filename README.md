@@ -20,8 +20,8 @@ Built as Phase 1 of a multi-phase project targeting autonomous systems and count
 | GPS peak error | ~8m |
 | EKF peak error | ~1m |
 
-![Trajectory](docs/trajectory.png)
-![Error Over Time](docs/error_plot.png)
+![Trajectory](docs/imgs/trajectory.png)
+![Error Over Time](docs/imgs/error_plot.png)
 
 ## Project Structure
 ```
