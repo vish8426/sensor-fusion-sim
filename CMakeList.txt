@@ -1,0 +1,35 @@
+cmake_minimum_required(VERSION 3.15)
+project(sensor_fusion_sim VERSION 1.0 LANGUAGES CXX)
+
+# Use C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Point to Eigen headers
+set(EIGEN_DIR ${CMAKE_SOURCE_DIR}/third_party/eigen)
+
+# Point to our own headers
+include_directories(
+    ${CMAKE_SOURCE_DIR}/include
+    ${EIGEN_DIR}
+)
+
+# Collect all C++ source files
+set(SOURCES
+    src/world.cpp
+    src/sensors.cpp
+    src/ekf.cpp
+)
+
+# Main executable
+add_executable(sensor_fusion_sim
+    src/main.cpp
+    ${SOURCES}
+)
+
+# Compiler warnings
+target_compile_options(sensor_fusion_sim PRIVATE
+    -Wall
+    -Wextra
+    -O2
+)
